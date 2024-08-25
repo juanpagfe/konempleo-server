@@ -1,0 +1,120 @@
+[2023-12-07 16:02:58 +0000] [35752] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:02:58 +0000] [35752] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:02:58 +0000] [35752] [ERROR] Retrying in 1 second.
+[2023-12-07 16:02:59 +0000] [35752] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:02:59 +0000] [35752] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:00 +0000] [35752] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:03:00 +0000] [35752] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:01 +0000] [35752] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:03:01 +0000] [35752] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:02 +0000] [35752] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:03:02 +0000] [35752] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:03 +0000] [35752] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2023-12-07 16:03:33 +0000] [35761] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:03:33 +0000] [35761] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:33 +0000] [35761] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:34 +0000] [35761] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:34 +0000] [35761] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:35 +0000] [35761] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:35 +0000] [35761] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:36 +0000] [35761] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:36 +0000] [35761] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:37 +0000] [35761] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:37 +0000] [35761] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:38 +0000] [35761] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2023-12-07 16:03:51 +0000] [35778] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:03:51 +0000] [35778] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:51 +0000] [35778] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:52 +0000] [35778] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:52 +0000] [35778] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:53 +0000] [35778] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:53 +0000] [35778] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:54 +0000] [35778] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:54 +0000] [35778] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:55 +0000] [35778] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:03:55 +0000] [35778] [ERROR] Retrying in 1 second.
+[2023-12-07 16:03:56 +0000] [35778] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2023-12-07 16:04:22 +0000] [35800] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:04:22 +0000] [35800] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:04:22 +0000] [35800] [ERROR] Retrying in 1 second.
+[2023-12-07 16:04:23 +0000] [35800] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:04:23 +0000] [35800] [ERROR] Retrying in 1 second.
+[2023-12-07 16:04:24 +0000] [35800] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:04:24 +0000] [35800] [ERROR] Retrying in 1 second.
+[2023-12-07 16:04:25 +0000] [35800] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:04:25 +0000] [35800] [ERROR] Retrying in 1 second.
+[2023-12-07 16:04:26 +0000] [35800] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:04:26 +0000] [35800] [ERROR] Retrying in 1 second.
+[2023-12-07 16:04:27 +0000] [35800] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2023-12-07 16:05:11 +0000] [35810] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:05:11 +0000] [35810] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:05:11 +0000] [35810] [ERROR] Retrying in 1 second.
+[2023-12-07 16:05:12 +0000] [35810] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:05:12 +0000] [35810] [ERROR] Retrying in 1 second.
+[2023-12-07 16:05:13 +0000] [35810] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:05:13 +0000] [35810] [ERROR] Retrying in 1 second.
+[2023-12-07 16:05:14 +0000] [35810] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:05:14 +0000] [35810] [ERROR] Retrying in 1 second.
+[2023-12-07 16:05:15 +0000] [35810] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:05:15 +0000] [35810] [ERROR] Retrying in 1 second.
+[2023-12-07 16:05:16 +0000] [35810] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2023-12-07 16:07:01 +0000] [35828] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:07:01 +0000] [35828] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:01 +0000] [35828] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:02 +0000] [35828] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:02 +0000] [35828] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:03 +0000] [35828] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:03 +0000] [35828] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:04 +0000] [35828] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:04 +0000] [35828] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:05 +0000] [35828] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:05 +0000] [35828] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:06 +0000] [35828] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2023-12-07 16:07:23 +0000] [35838] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:07:23 +0000] [35838] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:23 +0000] [35838] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:24 +0000] [35838] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:24 +0000] [35838] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:25 +0000] [35838] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:25 +0000] [35838] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:26 +0000] [35838] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:26 +0000] [35838] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:27 +0000] [35838] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:27 +0000] [35838] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:28 +0000] [35838] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2023-12-07 16:07:58 +0000] [35846] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:07:58 +0000] [35846] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:58 +0000] [35846] [ERROR] Retrying in 1 second.
+[2023-12-07 16:07:59 +0000] [35846] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:07:59 +0000] [35846] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:00 +0000] [35846] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:08:00 +0000] [35846] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:01 +0000] [35846] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:08:01 +0000] [35846] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:02 +0000] [35846] [ERROR] Connection in use: ('127.0.0.1', 8000)
+[2023-12-07 16:08:02 +0000] [35846] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:03 +0000] [35846] [ERROR] Can't connect to ('127.0.0.1', 8000)
+[2023-12-07 16:08:34 +0000] [35856] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:08:34 +0000] [35856] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:08:34 +0000] [35856] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:35 +0000] [35856] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:08:35 +0000] [35856] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:36 +0000] [35856] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:08:36 +0000] [35856] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:37 +0000] [35856] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:08:37 +0000] [35856] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:38 +0000] [35856] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:08:38 +0000] [35856] [ERROR] Retrying in 1 second.
+[2023-12-07 16:08:39 +0000] [35856] [ERROR] Can't connect to ('0.0.0.0', 8000)
+[2023-12-07 16:11:18 +0000] [35896] [INFO] Starting gunicorn 21.2.0
+[2023-12-07 16:11:18 +0000] [35896] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:11:18 +0000] [35896] [ERROR] Retrying in 1 second.
+[2023-12-07 16:11:19 +0000] [35896] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:11:19 +0000] [35896] [ERROR] Retrying in 1 second.
+[2023-12-07 16:11:20 +0000] [35896] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:11:20 +0000] [35896] [ERROR] Retrying in 1 second.
+[2023-12-07 16:11:21 +0000] [35896] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:11:21 +0000] [35896] [ERROR] Retrying in 1 second.
+[2023-12-07 16:11:22 +0000] [35896] [ERROR] Connection in use: ('0.0.0.0', 8000)
+[2023-12-07 16:11:22 +0000] [35896] [ERROR] Retrying in 1 second.
+[2023-12-07 16:11:23 +0000] [35896] [ERROR] Can't connect to ('0.0.0.0', 8000)

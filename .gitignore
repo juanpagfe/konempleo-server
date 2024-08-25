@@ -1,0 +1,5 @@
+venv
+apivenv
+__pycache__/
+.env
+settings.json
