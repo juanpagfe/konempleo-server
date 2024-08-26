@@ -59,6 +59,6 @@ class Offer(Base):
     ed_required = Column(Enum(educationEnum))
     cargoId = Column(Integer, ForeignKey('cargo.id'))
 
-    company_offers = relationship('CompanyOffer', back_populates='offer')
+    
     offer_skills = relationship('OfferSkill', back_populates='offer')
     vitae_offers = relationship('VitaeOffer', back_populates='offer')

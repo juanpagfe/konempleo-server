@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException
-from app.user.userService import createAdmin, createUser, get_random_question, get_random_question_listening
-from app.user.userDTO import UserCreate, UserInsert, UserWithResult
+from app.auth.authDTO import UserToken
+from app.auth.authService import get_user_current
+from app.user.userDTO import UserInsert
 from sqlalchemy.orm import Session
 from app.company.companyService import getByName
 from app import deps
+from models.user import UserEnum
 
 
 userRouter = APIRouter()
@@ -11,15 +13,14 @@ userRouter.tags = ['User']
 
 @userRouter.post("/user/", status_code=201, response_model=None)
 def create_user(
-    *, user_in: UserCreate, db: Session = Depends(deps.get_db)
+    *, user_in: UserInsert, db: Session = Depends(deps.get_db), userToken: UserToken = Depends(get_user_current)
 ) -> dict:
     
     """
     Create a new user in the database.
     """  
-    userDict = dict(user_in)
-    companyUid = userDict.pop('company_uid')
-    companyExist = getByName(db=db, uid=companyUid)
-    if companyExist == None:
-         raise HTTPException(status_code=404, detail="No company with given company")
-    userInsertObject = UserInsert.model_validate(userDict)
+    if userToken.role == UserEnum.super_admin :
+        raise HTTPException(status_code=404, detail="the role is right!!")
+    userDict = {}
+    return userDict
+

@@ -25,7 +25,7 @@ def upgrade() -> None:
     sa.Column('firstname', sa.String(), nullable=False),
     sa.Column('lastname', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
-    sa.Column('role', sa.Enum('admin', 'company', name='role_enum'), nullable=False),
+    sa.Column('role', sa.Enum('super_admin', 'admin', 'company', name='role_enum'), nullable=False),
     sa.Column('active', sa.Boolean(), nullable=True),
     sa.Column('password', sa.String(), nullable=False),
     sa.Column('created_at', sa.TIMESTAMP(), nullable=False),

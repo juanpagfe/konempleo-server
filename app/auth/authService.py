@@ -1,7 +1,7 @@
 
 from datetime import datetime, timedelta
 import os
-from typing import  Optional, Union
+from typing import  Optional
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
@@ -47,11 +47,8 @@ def generate_token(db: Session, username:str, password: str):
     access_token_expires = timedelta(minutes=int(os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')))
     payload = {}
     payload["sub"] = user.email
-    payload["fullname"] = user.first_name +' '+user.last_name 
-    payload["role"] =  user.usertype
-    payload["company"] = jsonable_encoder(user.userEnroll)[0]['company_id']
-    if(user.usertype == 'USER'):
-        payload["result"] =  jsonable_encoder(user.userResult)[0]['id']
+    payload["fullname"] = user.firstname +' '+user.lastname 
+    payload["role"] =  user.role
     return create_token(
         data=payload, expires_delta=access_token_expires
     )

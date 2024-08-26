@@ -1,6 +1,5 @@
 from enum import IntEnum
 from sqlalchemy import TIMESTAMP, Boolean, Column, Enum, Integer, String
-from sqlalchemy.orm import relationship
 
 from db.base_class import Base
 
@@ -23,4 +22,3 @@ class Users(Base):
     created_at = Column(TIMESTAMP, nullable=False)
     updated_at = Column(TIMESTAMP, nullable=False)
 
-    companies_relationship = relationship('CompanyUser', back_populates='user')

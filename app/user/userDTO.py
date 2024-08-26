@@ -24,14 +24,9 @@ class UserBase(BaseModel):
 
 class UserInsert(BaseModel):
     email: EmailStr
-    password: str
     first_name: str
     last_name: str
     usertype: UserEnum
-    dni: str
-    phone: str
-    country: str
-    city: str
 
 class UserCreate(UserInsert):
     company_uid: str

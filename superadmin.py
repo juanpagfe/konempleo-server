@@ -1,10 +1,11 @@
+from datetime import datetime
 from sqlalchemy.orm import Session
 
-from auth.authService import get_password_hash
+from app.auth import authService
 from db.session import SessionLocal
 from models.user import UserEnum, Users
 
-def create_superadmin(username: str, email: str, password: str):
+def create_superadmin(username: str, email: str, password: str,):
     db: Session = SessionLocal()
 
     # Check if a superadmin with the given email or username already exists
@@ -19,9 +20,13 @@ def create_superadmin(username: str, email: str, password: str):
     new_superadmin = Users(
         username=username,
         email=email,
-        hashed_password= get_password_hash(password),
+        firstname= "admin",
+        lastname= "user",
+        password= authService.get_password_hash(password),
         role=UserEnum.super_admin,  # Set the role to super_admin
-        is_active=True,
+        created_at= datetime.utcnow(),
+        updated_at= datetime.utcnow(),
+        active=True,
     )
     db.add(new_superadmin)
     db.commit()

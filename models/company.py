@@ -16,5 +16,4 @@ class Company(Base):
     activeoffers = Column(Integer)
     totaloffers = Column(Integer)
 
-    company_users = relationship('CompanyUser', back_populates='company')
-    company_offers = relationship('CompanyOffer', back_populates='company')
+    

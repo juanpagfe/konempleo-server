@@ -2,7 +2,7 @@ import os
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 load_dotenv()
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker
 
 def get_url():
     print(os.getenv("DB_PASSWORD", "no esta tomandola"))
