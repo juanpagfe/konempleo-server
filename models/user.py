@@ -1,9 +1,10 @@
+from enum import IntEnum
 from sqlalchemy import TIMESTAMP, Boolean, Column, Enum, Integer, String
 from sqlalchemy.orm import relationship
 
 from db.base_class import Base
 
-class UserEnum(Enum):
+class UserEnum(IntEnum):
     super_admin = 1
     admin = 2
     company = 3

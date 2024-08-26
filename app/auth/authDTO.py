@@ -15,5 +15,3 @@ class UserToken(BaseModel):
     email: str
     fullname: str
     role: UserEnum
-    company: int
-    result: int

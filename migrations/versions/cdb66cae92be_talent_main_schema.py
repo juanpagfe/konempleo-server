@@ -152,3 +152,13 @@ def downgrade() -> None:
     op.drop_table('skills')
     op.drop_table('company')
     op.drop_table('users')
+
+    op.execute('DROP TYPE status_enum')
+    op.execute('DROP TYPE whatsapp_status_enum')
+    op.execute('DROP TYPE contract_type_enum')
+    op.execute('DROP TYPE shift_enum')
+    op.execute('DROP TYPE gender_enum')
+    op.execute('DROP TYPE military_notebook_enum')
+    op.execute('DROP TYPE license_enum')
+    op.execute('DROP TYPE ed_required_enum')
+    op.execute('DROP TYPE role_enum')

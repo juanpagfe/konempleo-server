@@ -8,10 +8,8 @@ from fastapi import HTTPException
 from app.auth.authService import get_password_hash
 from app.baseController import ControllerBase
 from app.user.userDTO import UserEnrollInsert, UserInDBBase, UserInsert, UserSoftDelete, UserUpdateUser, UserWithResult
-from app.results.resultsDTO import ResultCreate
+from models.companyUser import CompanyUser
 from models.user import Users
-from models.company_enroll import Company_Enroll
-from models.results import Results
 from sqlalchemy.orm import Session
 from fastapi.encoders import jsonable_encoder
 
@@ -40,14 +38,10 @@ def createUser(db: Session, *, obj_in: UserInsert, company: int) -> UserWithResu
         db.refresh(db_obj)
         encodedUser = jsonable_encoder(db_obj)
         enroll_in_data = jsonable_encoder(UserEnrollInsert(**{ 'user_id':encodedUser.get('id'), 'company_id':company}))
-        enroll_obj = Company_Enroll(**enroll_in_data)
+        enroll_obj = CompanyUser(**enroll_in_data)
         db.add(enroll_obj)
-        result_in_data = jsonable_encoder(ResultCreate(**{'users_id':encodedUser.get('id')}))
-        result_obj = Results(**result_in_data)
-        db.add(result_obj)
         db.commit()
-        db.refresh(result_obj)
-        return UserWithResult(**{'user':UserInDBBase(**encodedUser), 'result_id':result_obj.id})
+        return UserWithResult(**{'user':UserInDBBase(**encodedUser), 'result_id':db_obj.id})
     except():
         db.rollback()
         raise HTTPException(status_code=400, detail="Error inserting new user")
@@ -62,7 +56,7 @@ def createAdmin(db: Session, *, obj_in: UserInsert, company: int) -> Users:
         db.refresh(db_obj)
         encodedUser = jsonable_encoder(db_obj)
         enroll_in_data = jsonable_encoder(UserEnrollInsert(**{ 'user_id':encodedUser.get('id'), 'company_id':company}))
-        enroll_obj = Company_Enroll(**enroll_in_data)
+        enroll_obj = CompanyUser(**enroll_in_data)
         db.add(enroll_obj)
         db.commit()
         return encodedUser

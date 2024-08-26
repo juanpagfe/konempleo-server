@@ -1,32 +1,33 @@
+from enum import IntEnum
 from sqlalchemy import Boolean, Column, Enum, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 from db.base_class import Base
 
-class contractEnum(Enum):
+class contractEnum(IntEnum):
     full_time = 1
     part_time = 2
 
-class shiftEnum(Enum):
+class shiftEnum(IntEnum):
     morning = 1
     evening = 2
     night = 3
 
-class genderEnum(Enum):
+class genderEnum(IntEnum):
     male = 1
     female = 2
     other = 3
 
-class militaryEnum(Enum):
+class militaryEnum(IntEnum):
     yes = 1
     no = 2
     NA = 3
 
-class licenseEnum(Enum):
+class licenseEnum(IntEnum):
     required = 1
     not_required = 2
 
-class educationEnum(Enum):
+class educationEnum(IntEnum):
     none = 1
     high_school = 2
     bachelor = 3
