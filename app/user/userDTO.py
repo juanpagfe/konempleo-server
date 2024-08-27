@@ -2,31 +2,28 @@ from datetime import datetime
 from enum import IntEnum
 from pydantic import BaseModel, EmailStr
 
+from models.user import UserEnum
 
-class UserEnum(IntEnum):
-    SUPERADMIN = 1
-    ADMIN = 2
-    USER = 3
+class UserCreateDTO(BaseModel):
+    fullname: str
+    email: EmailStr
+    role: UserEnum
+
+class UserInsert(BaseModel):
+    fullname: str
+    email: EmailStr
+    password: str
+    role: UserEnum
+
 
 class UserBase(BaseModel):
     email: str
-    first_name: str
-    last_name: str
+    fullname: str
     usertype: UserEnum
-    dni: str
-    phone: str
-    country: str
-    city: str
     deleted: bool
     active: bool
     created_at: datetime
     updated_at: datetime
-
-class UserInsert(BaseModel):
-    email: EmailStr
-    first_name: str
-    last_name: str
-    usertype: UserEnum
 
 class UserCreate(UserInsert):
     company_uid: str

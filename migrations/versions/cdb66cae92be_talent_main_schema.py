@@ -8,7 +8,10 @@ Create Date: 2024-08-25 14:09:57.002330
 from typing import Sequence, Union
 
 from alembic import op
+import datetime
 import sqlalchemy as sa
+
+from models.user import UserEnum
 
 
 # revision identifiers, used by Alembic.
@@ -21,16 +24,14 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('username', sa.String(), nullable=False),
-    sa.Column('firstname', sa.String(), nullable=False),
-    sa.Column('lastname', sa.String(), nullable=False),
+    sa.Column('fullname', sa.String(), nullable=False),
     sa.Column('email', sa.String(), nullable=False),
-    sa.Column('role', sa.Enum('super_admin', 'admin', 'company', name='role_enum'), nullable=False),
-    sa.Column('active', sa.Boolean(), nullable=True),
+    sa.Column('role', sa.Enum(UserEnum), nullable=False),
+    sa.Column('active', sa.Boolean(), nullable=False, default=True),
+    sa.Column('must_change_password', sa.Boolean(), nullable=False, default=True),
     sa.Column('password', sa.String(), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=False),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=False),
-    sa.Column('companies', sa.ARRAY(sa.Integer()), nullable=True),
+    sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.func.now()),
+    sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.func.now(), onupdate=sa.func.now()),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('company',
@@ -161,4 +162,4 @@ def downgrade() -> None:
     op.execute('DROP TYPE military_notebook_enum')
     op.execute('DROP TYPE license_enum')
     op.execute('DROP TYPE ed_required_enum')
-    op.execute('DROP TYPE role_enum')
+    op.execute('DROP TYPE userenum')

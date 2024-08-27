@@ -12,13 +12,11 @@ class Users(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    username = Column(String, nullable=False)
-    firstname = Column(String, nullable=False)
-    lastname = Column(String, nullable=False)
+    fullname = Column(String, nullable=False)
     email = Column(String, nullable=False)
     role = Column(Enum(UserEnum), nullable=False)
     active = Column(Boolean, default=True)
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP, nullable=False)
     updated_at = Column(TIMESTAMP, nullable=False)
-
+    must_change_password = Column(Boolean, default=True)

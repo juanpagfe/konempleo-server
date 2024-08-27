@@ -5,7 +5,7 @@ from typing import  Optional
 from fastapi.encoders import jsonable_encoder
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
-from fastapi import Depends, HTTPException
+from fastapi import Depends, HTTPException, status
 from app.deps import get_db
 from models.user import Users
 from app.auth.authDTO import TokenData, UserToken
@@ -22,6 +22,11 @@ def authenticate_user(db: Session, email: str, password: str):
           raise HTTPException(status_code=401, detail="Could not validate credentials", headers={"WWW-Authenticate":"Bearer"})
      if not verify_password(password, user.password):
           raise HTTPException(status_code=401, detail="Could not validate credentials", headers={"WWW-Authenticate":"Bearer"})
+     if user.must_change_password:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, 
+            detail="You must change your password before continuing."
+        )
      return user
 
 def verify_password(plain_password, hashed_password):
@@ -47,7 +52,7 @@ def generate_token(db: Session, username:str, password: str):
     access_token_expires = timedelta(minutes=int(os.getenv('ACCESS_TOKEN_EXPIRE_MINUTES')))
     payload = {}
     payload["sub"] = user.email
-    payload["fullname"] = user.firstname +' '+user.lastname 
+    payload["fullname"] = user.fullname 
     payload["role"] =  user.role
     return create_token(
         data=payload, expires_delta=access_token_expires
