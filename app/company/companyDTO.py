@@ -1,27 +1,42 @@
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Extra, StrictBytes
+from pydantic import BaseModel, EmailStr, Extra, StrictBytes
+
+from app.user.userDTO import UserCreateDTO
 
 
 class CompanyBase(BaseModel):
     name: str
-    country: str
-    deleted: bool
+    sector: str
+    document: str
+    document_type: str
+    address: str
+    city: str
+    picture: str
+    activeoffers: int
+    totaloffers: int
     active: bool
-    uid: str
-    created_at: datetime
-    updated_at: datetime
+    employees: int
 
 class CompanyCreate(BaseModel):
     name: str
-    country: str
-    uid: Optional[str] = None
+    sector: str
+    document: str
+    document_type: str
+    address: str
+    city: str
+    picture: str
+    employees: int
+    responsible_user: UserCreateDTO
 
 class CompanyUpdate(BaseModel,extra = Extra.forbid):
-    id: int
-    name: Optional[str] = None
-    country: Optional[str] = None
-    uid: str
+    name: str
+    sector: str
+    document: str
+    document_type: str
+    address: str
+    city: str
+    picture: str
     
 class CompanySoftDelete(BaseModel):
     deleted: bool

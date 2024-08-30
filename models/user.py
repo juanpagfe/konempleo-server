@@ -1,5 +1,5 @@
 from enum import IntEnum
-from sqlalchemy import TIMESTAMP, Boolean, Column, Enum, Integer, String
+from sqlalchemy import TIMESTAMP, Boolean, Column, Enum, Integer, String, func
 
 from db.base_class import Base
 
@@ -17,6 +17,6 @@ class Users(Base):
     role = Column(Enum(UserEnum), nullable=False)
     active = Column(Boolean, default=True)
     password = Column(String, nullable=False)
-    created_at = Column(TIMESTAMP, nullable=False)
-    updated_at = Column(TIMESTAMP, nullable=False)
+    created_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
+    updated_at = Column(TIMESTAMP, nullable=False, server_default=func.now(), onupdate=func.now())
     must_change_password = Column(Boolean, default=True)

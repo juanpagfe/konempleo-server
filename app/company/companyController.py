@@ -3,11 +3,15 @@
 import base64
 import os
 from fastapi import APIRouter, Depends, HTTPException
+from app.auth.authService import get_password_hash
 from app.company.companyDTO import Company, CompanyCreate, CompanySoftDelete, CompanyUpdate
 from sqlalchemy.orm import Session
 from app.company.companyService import company
 from app import deps
 from cryptography.fernet import Fernet
+
+from models.companyUser import CompanyUser
+from models.user import Users
 
 
 companyRouter = APIRouter()
@@ -20,10 +24,42 @@ def create_company(
     """
     Create a new company in the database.
     """
-    fernet = Fernet(os.getenv("UID_KEY"))
-    company_in.uid = str(fernet.encrypt(company_in.name.encode()), encoding='utf-8')
-    companyCreated = company.create(db=db, obj_in=company_in)
-    return companyCreated
+    try:
+        with db.begin():
+            user = Users(
+                fullname= company_in.responsible_user.fullname,
+                email= company_in.responsible_user.email,
+                password= get_password_hash('deeptalentUser'),
+                role= company_in.responsible_user.role,
+            )
+            db.add(user)
+            db.flush() 
+
+            company = Company(
+                name=company_in.name,
+                sector= company_in.sector,
+                document= company_in.document,
+                document_type= company_in.document_type,
+                address= company_in.address,
+                city= company_in.city,
+                picture= company_in.picture,
+                employees= company_in.employees,
+            )
+            db.add(company)
+            db.flush()  
+
+            company_user = CompanyUser(
+                companyId=company.id,
+                userId=user.id
+            )
+            db.add(company_user)
+
+        return company
+
+    except Exception as e:
+        # If any operation fails, the transaction is rolled back automatically
+        db.rollback()
+        raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
 @companyRouter.get("/company/{company_id}", status_code=200, response_model=Company)
 def get_company(

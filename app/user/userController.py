@@ -4,10 +4,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from app.auth.authDTO import UserToken
 from app.auth.authService import get_password_hash, get_user_current
 from app.user.userService import userServices
-from app.user.userDTO import UserCreateDTO, UserInsert
+from app.user.userDTO import User, UserCreateDTO, UserInsert
 from sqlalchemy.orm import Session
 from app import deps
 from models.user import UserEnum
+from typing import List
 
 
 userRouter = APIRouter()
@@ -48,3 +49,21 @@ def create_user(
         traceback.print_exc()
         raise HTTPException(status_code=500, detail="An error occurred while creating the user.")
 
+
+@userRouter.get("/users/", status_code=200, response_model=List[User])
+def get_users(
+    *, db: Session = Depends(deps.get_db), userToken: UserToken = Depends(get_user_current)
+) -> dict:
+    """
+    gets users in the database.
+    """
+    users = []
+    if userToken.role not in [UserEnum.super_admin, UserEnum.admin]:
+        raise HTTPException(status_code=403, detail="No tiene los permisos para ejecutar este servicio")
+    try:
+        users = userServices.get_multi(db=db)
+        return users
+    
+    except Exception as e:
+        print(f"Error occurred in create_user function: {str(e)}")
+        raise HTTPException(status_code=500, detail="Error Fetching the clients")

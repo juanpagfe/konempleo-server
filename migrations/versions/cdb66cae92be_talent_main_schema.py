@@ -8,7 +8,7 @@ Create Date: 2024-08-25 14:09:57.002330
 from typing import Sequence, Union
 
 from alembic import op
-import datetime
+from datetime import datetime
 import sqlalchemy as sa
 
 from models.user import UserEnum
@@ -28,22 +28,25 @@ def upgrade() -> None:
     sa.Column('email', sa.String(), nullable=False),
     sa.Column('role', sa.Enum(UserEnum), nullable=False),
     sa.Column('active', sa.Boolean(), nullable=False, default=True),
-    sa.Column('must_change_password', sa.Boolean(), nullable=False, default=True),
+    sa.Column('must_change_password', sa.Boolean(), nullable=False, server_default=sa.text('true')),
     sa.Column('password', sa.String(), nullable=False),
-    sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.func.now()),
-    sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.func.now(), onupdate=sa.func.now()),
+    sa.Column('created_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('CURRENT_TIMESTAMP')),
+    sa.Column('updated_at', sa.TIMESTAMP(), nullable=False, server_default=sa.text('CURRENT_TIMESTAMP'), onupdate=sa.text('CURRENT_TIMESTAMP')),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('company',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(), nullable=False),
+    sa.Column('document', sa.String(), nullable=False),
+    sa.Column('document_type', sa.String(), nullable=False),
     sa.Column('sector', sa.String(), nullable=True),
-    sa.Column('KAM', sa.String(), nullable=True),
+    sa.Column('city', sa.String(), nullable=True),
+    sa.Column('address', sa.String(), nullable=True),
     sa.Column('picture', sa.String(), nullable=True),
-    sa.Column('responsible', sa.String(), nullable=True),
-    sa.Column('responsibleMail', sa.String(), nullable=True),
-    sa.Column('activeoffers', sa.Integer(), nullable=True),
-    sa.Column('totaloffers', sa.Integer(), nullable=True),
+    sa.Column('activeoffers', sa.Integer(), nullable=False, server_default=0),
+    sa.Column('totaloffers', sa.Integer(), nullable=False, server_default=0),
+    sa.Column('active', sa.Boolean(), nullable=False, default=True),
+    sa.Column('employees', sa.Integer(), nullable=False, server_default=0),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('skills',

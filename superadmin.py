@@ -23,8 +23,6 @@ def create_superadmin(email: str, password: str,):
         password= authService.get_password_hash(password),
         must_change_password = False,
         role=UserEnum.super_admin,  # Set the role to super_admin
-        created_at= datetime.utcnow(),
-        updated_at= datetime.utcnow(),
         active=True, 
     )
     db.add(new_superadmin)
