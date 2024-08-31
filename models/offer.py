@@ -61,4 +61,3 @@ class Offer(Base):
 
     
     offer_skills = relationship('OfferSkill', back_populates='offer')
-    vitae_offers = relationship('VitaeOffer', back_populates='offer')

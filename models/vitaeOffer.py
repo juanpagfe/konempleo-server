@@ -17,5 +17,5 @@ class VitaeOffer(Base):
     response_score = Column(Float)
     whatsapp_status = Column(Enum('sent', 'delivered', 'read', name='whatsapp_status_enum'))
 
-    cvitae = relationship('CVitae', back_populates='vitae_offers')
+    Cvitae = relationship('CVitae', back_populates='Vitae_offers')
     offer = relationship('Offer', back_populates='vitae_offers')

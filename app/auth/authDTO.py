@@ -14,6 +14,7 @@ class UserToken(BaseModel):
     email: str
     fullname: str
     role: UserEnum
+    id: int
 
 class UpdatePassword(BaseModel):
     email: str

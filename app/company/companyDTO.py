@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Optional
+from fastapi import File, UploadFile
 from pydantic import BaseModel, EmailStr, Extra, StrictBytes
 
 from app.user.userDTO import UserCreateDTO
@@ -10,12 +11,11 @@ class CompanyBase(BaseModel):
     sector: str
     document: str
     document_type: str
-    address: str
     city: str
-    picture: str
-    activeoffers: int
-    totaloffers: int
-    active: bool
+    picture: Optional[str] = None
+    activeoffers: Optional[int] = 0
+    totaloffers: Optional[int] = 0
+    active: bool = True
     employees: int
 
 class CompanyCreate(BaseModel):
@@ -23,11 +23,13 @@ class CompanyCreate(BaseModel):
     sector: str
     document: str
     document_type: str
-    address: str
     city: str
-    picture: str
     employees: int
+    activeoffers: Optional[int] = 0
+    totaloffers: Optional[int] = 0
+    employees: Optional[int] = 0
     responsible_user: UserCreateDTO
+    
 
 class CompanyUpdate(BaseModel,extra = Extra.forbid):
     name: str

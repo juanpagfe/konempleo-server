@@ -22,4 +22,4 @@ class CVitae(Base):
     candidate_city = Column(String)
     background_check = Column(String)
 
-    vitae_offers = relationship('VitaeOffer', back_populates='cvitae')
+    Vitae_offers = relationship('VitaeOffer', back_populates='Cvitae')

@@ -1,4 +1,5 @@
-from sqlalchemy import Boolean, Column, Integer, String
+from sqlalchemy import Boolean, Column, Integer, String, text
+from sqlalchemy.orm import relationship
 
 from db.base_class import Base
 
@@ -10,10 +11,11 @@ class Company(Base):
     sector = Column(String)
     document = Column(String)
     document_type = Column(String)
-    address = Column(String)
     picture = Column(String)
-    activeoffers = Column(Integer)
-    totaloffers = Column(Integer)
-    employees = Column(Integer)
+    activeoffers = Column(Integer, server_default=text('0'))
+    totaloffers = Column(Integer, server_default=text('0'))
+    employees = Column(Integer, server_default=text('0'))
     city = Column(String)
     active = Column(Boolean, default=True)
+
+    users = relationship("CompanyUser", back_populates="company")

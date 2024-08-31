@@ -1,5 +1,6 @@
 from enum import IntEnum
 from sqlalchemy import TIMESTAMP, Boolean, Column, Enum, Integer, String, func
+from sqlalchemy.orm import relationship
 
 from db.base_class import Base
 
@@ -16,7 +17,10 @@ class Users(Base):
     email = Column(String, nullable=False)
     role = Column(Enum(UserEnum), nullable=False)
     active = Column(Boolean, default=True)
+    phone = Column(String, nullable=True)
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP, nullable=False, server_default=func.now())
     updated_at = Column(TIMESTAMP, nullable=False, server_default=func.now(), onupdate=func.now())
     must_change_password = Column(Boolean, default=True)
+
+    companies = relationship("CompanyUser", back_populates="user")

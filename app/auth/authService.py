@@ -54,6 +54,7 @@ def generate_token(db: Session, username:str, password: str):
     payload["sub"] = user.email
     payload["fullname"] = user.fullname 
     payload["role"] =  user.role
+    payload["id"] = user.id
     return create_token(
         data=payload, expires_delta=access_token_expires
     )
@@ -71,8 +72,8 @@ def get_user_current(db: Session = Depends(get_db), token: str = Depends(oauth2_
      if user is None:
          raise HTTPException(status_code=401, detail="Could not validate credentials", headers={"WWW-Authenticate":"Bearer"})
      user_data_token = UserToken(**{'email':username, 'fullname': token_decoded.get("fullname"), 
-                                                    'role':token_decoded.get("role"), 'company': token_decoded.get("company"),
-                                                    'result':token_decoded.get("result")})
+                                                    'role':token_decoded.get("role"),
+                                                    'id':token_decoded.get("id")})
      return user_data_token
      
 def get_password_hash(password):

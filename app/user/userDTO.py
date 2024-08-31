@@ -1,5 +1,6 @@
 from datetime import datetime
 from enum import IntEnum
+from typing import Optional
 from pydantic import BaseModel, EmailStr
 
 from models.user import UserEnum
@@ -13,7 +14,8 @@ class UserBase(BaseModel):
 class UserCreateDTO(BaseModel):
     fullname: str
     email: EmailStr
-    role: UserEnum
+    role: Optional[UserEnum] = 3
+    phone: Optional[str] = None
 
 class UserInsert(BaseModel):
     fullname: str
