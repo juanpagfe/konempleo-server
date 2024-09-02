@@ -2,6 +2,7 @@
 from typing import List, Optional
 from fastapi import APIRouter, Body, Depends, File, HTTPException, UploadFile
 from fastapi.encoders import jsonable_encoder
+from sqlalchemy import func
 from app.auth.authDTO import UserToken
 from app.auth.authService import get_password_hash, get_user_current
 from app.company.companyDTO import Company, CompanyCreate
@@ -11,6 +12,7 @@ from app import deps
 from models.company import Company as CompanyModel
 
 from models.companyUser import CompanyUser
+from models.cvitae import CVitae
 from models.user import UserEnum, Users
 
 
@@ -87,7 +89,26 @@ def get_company(
     company_ids = [record.companyId for record in company_user_records]
     companies = db.query(CompanyModel).filter(CompanyModel.id.in_(company_ids)).all()
 
-    if not companies:
+    # Query to get all companies and count of CVitae records for each company
+    companies_with_cv_count = db.query(
+        CompanyModel,
+        func.count(CVitae.Id).label('cv_count')
+    ).outerjoin(
+        CVitae, CVitae.companyId == CompanyModel.id
+    ).filter(
+        CompanyModel.id.in_(company_ids)
+    ).group_by(
+        CompanyModel.id
+    ).all()
+
+    if not companies_with_cv_count:
         raise HTTPException(status_code=404, detail="No companies found.")
     
-    return companies
+    # Format the response to include the company data along with the CV count
+    result = []
+    for company, cv_count in companies_with_cv_count:
+        company_dict = company.__dict__.copy()
+        company_dict['cv_count'] = cv_count
+        result.append(company_dict)
+    
+    return result

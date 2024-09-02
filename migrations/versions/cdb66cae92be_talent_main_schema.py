@@ -72,6 +72,8 @@ def upgrade() -> None:
     sa.Column('candidate_mail', sa.String(), nullable=True),
     sa.Column('candidate_city', sa.String(), nullable=True),
     sa.Column('background_check', sa.String(), nullable=True),
+    sa.Column('companyId', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['companyId'], ['company.id'], ),
     sa.PrimaryKeyConstraint('Id')
     )
     op.create_table('offers',
