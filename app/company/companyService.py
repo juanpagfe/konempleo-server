@@ -6,9 +6,10 @@ from fastapi import HTTPException, UploadFile
 from db import session
 from app.baseController import ControllerBase
 from app.company.companyDTO import CompanyCreate, CompanyUpdate, CompanySoftDelete
-from models.company import Company
 from cryptography.fernet import Fernet
 import boto3
+
+from models.models import Company
 
 s3_client = boto3.client(
     's3',

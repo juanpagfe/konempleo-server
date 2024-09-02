@@ -5,15 +5,13 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import func
 from app.auth.authDTO import UserToken
 from app.auth.authService import get_password_hash, get_user_current
-from app.company.companyDTO import Company, CompanyCreate
+from app.company.companyDTO import Company, CompanyCreate, CompanyWCount
 from sqlalchemy.orm import Session
 from app.company.companyService import company, upload_picture_to_s3
 from app import deps
-from models.company import Company as CompanyModel
+from models.models import CVitae, CompanyUser, UserEnum, Users
+from models.models import Company as CompanyModel
 
-from models.companyUser import CompanyUser
-from models.cvitae import CVitae
-from models.user import UserEnum, Users
 
 
 companyRouter = APIRouter()
@@ -74,7 +72,7 @@ def create_company(
         db.rollback()
         raise HTTPException(status_code=500, detail=f"An error occurred while creating the company: {str(e)}")
 
-@companyRouter.get("/company/owned/", status_code=200, response_model=List[Company])
+@companyRouter.get("/company/owned/", status_code=200, response_model=List[CompanyWCount])
 def get_company(
     *, db: Session = Depends(deps.get_db), userToken: UserToken = Depends(get_user_current)
 ) -> dict:

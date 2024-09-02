@@ -1,7 +1,8 @@
 from typing import Optional
 from pydantic import BaseModel
 
-from app.user.userDTO import UserEnum
+from models.models import UserEnum
+
 
 class Token(BaseModel):
     access_token: str

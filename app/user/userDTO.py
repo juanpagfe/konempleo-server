@@ -3,7 +3,8 @@ from enum import IntEnum
 from typing import Optional
 from pydantic import BaseModel, EmailStr
 
-from models.user import UserEnum
+from models.models import UserEnum
+
 
 class UserBase(BaseModel):
     fullname: str

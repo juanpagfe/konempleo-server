@@ -7,8 +7,9 @@ from app.user.userService import userServices
 from app.user.userDTO import User, UserCreateDTO, UserInsert
 from sqlalchemy.orm import Session
 from app import deps
-from models.user import UserEnum
 from typing import List
+
+from models.models import UserEnum
 
 
 userRouter = APIRouter()

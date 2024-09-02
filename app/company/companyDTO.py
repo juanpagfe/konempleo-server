@@ -51,8 +51,20 @@ class CompanyInDBBase(CompanyBase):
     class Config:
         orm_mode: True
 
+# Properties shared by models stored in DB
+class CompanyInDBBaseWCount(CompanyBase):
+    id: int
+    cv_count: int
+
+    class Config:
+        orm_mode: True
+
 # Properties to return to client
 class Company(CompanyInDBBase):
+    pass
+
+# Properties to return to client
+class CompanyWCount(CompanyInDBBaseWCount):
     pass
 
 # Properties properties stored in DB

@@ -7,10 +7,11 @@ from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
 from fastapi import Depends, HTTPException, status
 from app.deps import get_db
-from models.user import Users
 from app.auth.authDTO import TokenData, UserToken
 from sqlalchemy.orm import Session
 from jose import jwt, JWTError
+
+from models.models import Users
 
 oauth2_scheme = OAuth2PasswordBearer("/login")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
