@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.company.companyController import companyRouter
 from app.user.userController import userRouter
 from app.auth.authController import authRouter
+from app.offer.offerController import offerRouter
 
 description = """
 All these configurations are suggested in the doc and
@@ -33,3 +34,4 @@ api_router = APIRouter()
 app.include_router(companyRouter)
 app.include_router(userRouter)
 app.include_router(authRouter)
+app.include_router(offerRouter)

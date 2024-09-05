@@ -120,6 +120,8 @@ class Offer(Base):
     offer_type = Column(String)
     ed_required = Column(Enum(educationEnum))
     cargoId = Column(Integer, ForeignKey('cargo.id'))
+    # assigned_cvs = Column(Integer, server_default=text('0'))
+    # filter_questions = Column(String)
 
     
     offer_skills = relationship('OfferSkill', back_populates='offer')

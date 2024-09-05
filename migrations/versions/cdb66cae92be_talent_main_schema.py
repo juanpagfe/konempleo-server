@@ -95,7 +95,9 @@ def upgrade() -> None:
     sa.Column('experience_years', sa.Integer(), nullable=True),
     sa.Column('offer_type', sa.String(), nullable=True),
     sa.Column('ed_required', sa.Enum('none', 'high_school', 'bachelor', 'master', 'doctorate', name='ed_required_enum'), nullable=True),
-    sa.Column('cargoId', sa.Integer(), nullable=True),
+    sa.Column('cargoId', sa.Integer(), nullable=False),
+    # sa.Column('filter_questions', sa.String(), nullable=True),
+    # sa.Column('assigned_cvs', sa.Integer(), nullable=True, server_default=sa.text('0')),
     sa.ForeignKeyConstraint(['cargoId'], ['cargo.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
